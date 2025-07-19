@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Testimonials - Wellness Medical Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3d6f 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.4em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 80px 0 60px;
+            font-size: 2.8em;
+            color: #2c5aa0;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #2c5aa0, #4a90e2);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #2c5aa0, #4a90e2);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .patient-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .patient-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 4px solid #f0f0f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .patient-details h3 {
+            font-size: 1.3em;
+            color: #2c5aa0;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .patient-details p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.3em;
+            margin: 15px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #444;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4em;
+            color: #2c5aa0;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .clinic-gallery {
+            margin: 80px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .clinic-photo {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .clinic-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .clinic-photo img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+
+        .clinic-photo:hover img {
+            filter: brightness(1.1);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 30px 20px 20px;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3d6f 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .cta-section p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2c5aa0;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            header h1 {
+                font-size: 2.5em;
+            }
+            
+            .section-title {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Patient Testimonials</h1>
+            <p>Real stories from real patients who trust us with their health and wellness</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2 class="section-title">What Our Patients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="patient-info">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face" alt="Sarah Johnson" class="patient-photo">
+                        <div class="patient-details">
+                            <h3>Sarah Johnson</h3>
+                            <p>Age 34 • Marketing Executive</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        The care I received here was exceptional. Dr. Martinez took the time to listen to my concerns and explained everything clearly. The staff made me feel comfortable throughout my treatment, and I'm thrilled with the results. I highly recommend this clinic to anyone seeking quality healthcare.
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="patient-info">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" alt="Michael Chen" class="patient-photo">
+                        <div class="patient-details">
+                            <h3>Michael Chen</h3>
+                            <p>Age 45 • Business Owner</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        I've been coming here for over two years now, and the consistency in quality care is remarkable. The medical team is knowledgeable, professional, and genuinely caring. The facility is always clean and well-maintained. This is healthcare done right.
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="patient-info">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b050?w=200&h=200&fit=crop&crop=face" alt="Emily Rodriguez" class="patient-photo">
+                        <div class="patient-details">
+                            <h3>Emily Rodriguez</h3>
+                            <p>Age 28 • Teacher</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        As a teacher with a busy schedule, I appreciate how accommodating this clinic is with appointments. The online booking system is fantastic, and I never have to wait long. The preventive care program has helped me stay healthy and catch issues early. Truly outstanding service.
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="patient-info">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="David Thompson" class="patient-photo">
+                        <div class="patient-details">
+                            <h3>David Thompson</h3>
+                            <p>Age 52 • Engineer</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        After years of searching for a reliable healthcare provider, I finally found it here. The comprehensive approach to my health concerns, combined with the latest medical technology, gives me complete confidence. The results speak for themselves – I feel better than I have in years.
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="patient-info">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face" alt="Lisa Park" class="patient-photo">
+                        <div class="patient-details">
+                            <h3>Lisa Park</h3>
+                            <p>Age 39 • Graphic Designer</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        The entire experience here exceeded my expectations. From the moment I walked in, I felt welcomed and cared for. The medical team's attention to detail and personalized treatment plan made all the difference. I'm grateful for the excellent care I received.
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="patient-info">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face" alt="Robert Kim" class="patient-photo">
+                        <div class="patient-details">
+                            <h3>Robert Kim</h3>
+                            <p>Age 41 • Financial Advisor</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        What sets this clinic apart is their commitment to patient education. They don't just treat symptoms; they help you understand your health and make informed decisions. The follow-up care is excellent, and I always feel supported throughout my health journey.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="clinic-gallery">
+            <h2 class="section-title">Our State-of-the-Art Facility</h2>
+            <div class="gallery-grid">
+                <div class="clinic-photo">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=600&h=400&fit=crop" alt="Modern Reception Area">
+                    <div class="photo-caption">Welcoming Reception Area</div>
+                </div>
+                <div class="clinic-photo">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop" alt="Examination Room">
+                    <div class="photo-caption">Private Examination Rooms</div>
+                </div>
+                <div class="clinic-photo">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop" alt="Medical Equipment">
+                    <div class="photo-caption">Advanced Medical Technology</div>
+                </div>
+                <div class="clinic-photo">
+                    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8eeb4?w=600&h=400&fit=crop" alt="Waiting Area">
+                    <div class="photo-caption">Comfortable Waiting Area</div>
+                </div>
+                <div class="clinic-photo">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop" alt="Laboratory">
+                    <div class="photo-caption">On-Site Laboratory</div>
+                </div>
+                <div class="clinic-photo">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" alt="Consultation Room">
+                    <div class="photo-caption">Consultation Rooms</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Experience Exceptional Care</h2>
+            <p>Join thousands of satisfied patients who trust us with their health and wellness needs</p>
+            <a href="#" class="cta-button">Schedule Your Appointment</a>
+        </div>
+    </section>
+
+    <script>
+        // Add smooth scrolling and animation effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate testimonial cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Initially hide cards and observe them
+            const cards = document.querySelectorAll('.testimonial-card, .clinic-photo');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+
+            // Smooth scroll for CTA button
+            document.querySelector('.cta-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

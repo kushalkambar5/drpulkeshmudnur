@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2c5aa0;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5aa0;
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            margin: 0.5rem 0 0.2rem;
+            color: #333;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
+            margin-right: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #2c5aa0;
+        }
+
+        .btn-secondary:hover {
+            background-color: #1e3a8a;
+            transform: translateY(-2px);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-section {
+            background-color: #f8f9ff;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+
+        .contact-section h2 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>HealthCare Plus Clinic</h2>
+    </header>
+
+    <div class="container">
+        <h1>Book an Appointment</h1>
+        <form>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required>
+
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" required>
+
+            <label for="time">Preferred Time</label>
+            <input type="time" id="time" required>
+
+            <label for="message">Additional Notes (Optional)</label>
+            <textarea id="message" rows="4"></textarea>
+
+            <div class="buttons">
+                <a href="payment.html" class="btn btn-primary">💳 Pay Payment</a>
+                <a href="#contact" class="btn btn-secondary">📞 Contact Information</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="contact-section" id="contact">
+        <h2>Contact Information</h2>
+        <p><strong>Address:</strong> 123 Healthcare Drive, Medical District, NY 10001</p>
+        <p><strong>Phone:</strong> (555) 123-4567</p>
+        <p><strong>Email:</strong> info@healthcareplus.com</p>
+        <p><strong>Hours:</strong> Mon-Fri 8:00 AM - 6:00 PM</p>
+    </div>
+
+</body>
+</html>

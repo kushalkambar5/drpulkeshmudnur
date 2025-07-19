@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Dr. Sarah Mitchell & HealthCare Plus Clinic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2c5aa0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e0e7ff;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 4rem 0;
+            margin-top: -2rem;
+            position: relative;
+            z-index: 10;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .doctor-profile {
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e6f2ff 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .doctor-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, #6b73ff, #000dff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .doctor-name {
+            font-size: 2rem;
+            color: #2c5aa0;
+            margin-bottom: 0.5rem;
+        }
+
+        .doctor-title {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .doctor-info {
+            padding: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .subsection-title {
+            font-size: 1.8rem;
+            color: #2c5aa0;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .qualifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .qualification-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e6f2ff 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #2c5aa0;
+            transition: all 0.3s ease;
+        }
+
+        .qualification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .qualification-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .qualification-title {
+            font-size: 1.3rem;
+            color: #2c5aa0;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #2c5aa0, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #2c5aa0;
+            border-radius: 50%;
+            transform: translateX(-5px);
+        }
+
+        .timeline-year {
+            font-size: 1.1rem;
+            color: #2c5aa0;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        /* Clinic Section */
+        .clinic-section {
+            background: #f8f9ff;
+            padding: 4rem 0;
+        }
+
+        .clinic-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .clinic-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        /* Achievements Section */
+        .achievements-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3a8a 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #f8f9ff;
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .clinic-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .doctor-image {
+                width: 200px;
+                height: 200px;
+                font-size: 4rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">🏥 HealthCare Plus</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About</a></li>
+                <li><a href="#doctor">Doctor</a></li>
+                <li><a href="#clinic">Clinic</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>About Us</h1>
+                <p>Meet Dr. Sarah Mitchell and discover the values that drive our commitment to exceptional healthcare</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="doctor-profile">
+                    <div class="doctor-image">👩‍⚕️</div>
+                    <h2 class="doctor-name">Dr. Sarah Mitchell</h2>
+                    <p class="doctor-title">MD, Internal Medicine & Cardiology</p>
+                    <div class="cta-buttons">
+                        <a href="#appointment" class="btn btn-primary">📅 Book Appointment</a>
+                    </div>
+                </div>
+                <div class="doctor-info">
+                    <h2 class="subsection-title">About Dr. Mitchell</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                        Dr. Sarah Mitchell is a board-certified internist and cardiologist with over 15 years of experience in providing comprehensive healthcare. She is dedicated to delivering personalized, compassionate care while utilizing the latest medical advances to ensure optimal patient outcomes.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                        Dr. Mitchell believes in building strong doctor-patient relationships based on trust, communication, and mutual respect. She takes the time to listen to her patients' concerns and works collaboratively to develop treatment plans that align with their individual needs and lifestyle.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Education & Qualifications</h2>
+            <div class="qualifications-grid">
+                <div class="qualification-card">
+                    <div class="qualification-icon">🎓</div>
+                    <h3 class="qualification-title">Medical Degree</h3>
+                    <p><strong>Harvard Medical School</strong><br>Doctor of Medicine (MD)<br>Magna Cum Laude, 2008</p>
+                </div>
+                <div class="qualification-card">
+                    <div class="qualification-icon">🏥</div>
+                    <h3 class="qualification-title">Residency</h3>
+                    <p><strong>Johns Hopkins Hospital</strong><br>Internal Medicine Residency<br>Chief Resident, 2008-2011</p>
+                </div>
+                <div class="qualification-card">
+                    <div class="qualification-icon">❤️</div>
+                    <h3 class="qualification-title">Fellowship</h3>
+                    <p><strong>Mayo Clinic</strong><br>Cardiology Fellowship<br>Interventional Cardiology, 2011-2014</p>
+                </div>
+                <div class="qualification-card">
+                    <div class="qualification-icon">📜</div>
+                    <h3 class="qualification-title">Board Certifications</h3>
+                    <p>American Board of Internal Medicine<br>American Board of Cardiovascular Disease<br>Advanced Cardiac Life Support (ACLS)</p>
+                </div>
+            </div>
+
+            <h2 class="subsection-title">Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2018 - Present</div>
+                    <div class="timeline-title">Director & Founder - HealthCare Plus Clinic</div>
+                    <div class="timeline-description">Founded and established comprehensive healthcare facility focusing on preventive medicine and patient-centered care. Built multidisciplinary team serving over 3,000 patients annually.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2014 - 2018</div>
+                    <div class="timeline-title">Senior Cardiologist - Metropolitan Medical Center</div>
+                    <div class="timeline-description">Provided specialized cardiac care including interventional procedures, managed complex cardiovascular cases, and mentored cardiology fellows.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2011 - 2014</div>
+                    <div class="timeline-title">Attending Physician - Internal Medicine</div>
+                    <div class="timeline-description">Delivered comprehensive internal medicine care, managed hospitalized patients, and participated in medical education programs.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="clinic-section" id="clinic">
+        <div class="container">
+            <h2 class="section-title">About Our Clinic</h2>
+            <div class="clinic-content">
+                <div>
+                    <h3 class="subsection-title">Our Story</h3>
+                    <p class="clinic-text">
+                        HealthCare Plus Clinic was founded in 2018 with a vision to revolutionize healthcare delivery by combining cutting-edge medical technology with compassionate, personalized care. Located in the heart of the medical district, our state-of-the-art facility spans 8,000 square feet and features the latest diagnostic equipment and treatment technologies.
+                    </p>
+                    <p class="clinic-text">
+                        Our journey began with Dr. Mitchell's desire to create a healthcare environment where patients feel heard, respected, and cared for as individuals. We've grown from a small practice to a comprehensive medical facility serving thousands of patients while maintaining our commitment to personalized care.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="subsection-title">Our Mission</h3>
+                    <p class="clinic-text">
+                        To provide exceptional, accessible healthcare that empowers patients to achieve optimal health and wellness through comprehensive medical care, education, and preventive services.
+                    </p>
+                    <h3 class="subsection-title">Our Vision</h3>
+                    <p class="clinic-text">
+                        To be the leading healthcare provider in our community, recognized for clinical excellence, innovation, and patient satisfaction while advancing the future of medicine through research and education.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Our Core Values</h3>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">💙</div>
+                    <h4 class="value-title">Compassion</h4>
+                    <p>We treat every patient with empathy, understanding, and genuine care, recognizing the trust placed in us.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔬</div>
+                    <h4 class="value-title">Excellence</h4>
+                    <p>We strive for the highest standards in medical care, continuously improving our skills and knowledge.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h4 class="value-title">Integrity</h4>
+                    <p>We maintain the highest ethical standards in all our interactions and medical practices.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌟</div>
+                    <h4 class="value-title">Innovation</h4>
+                    <p>We embrace new technologies and methods to provide the most effective treatments available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements-section">
+        <div class="container">
+            <h2 class="section-title">Professional Achievements & Certifications</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3 class="achievement-title">Top Doctor Award</h3>
+                    <p>Recognized as "Top Doctor" by Metro Health Magazine for 3 consecutive years (2022-2024)</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">📚</div>
+                    <h3 class="achievement-title">Medical Publications</h3>
+                    <p>Author of 25+ peer-reviewed articles in cardiology and internal medicine journals</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎯</div>
+                    <h3 class="achievement-title">Clinical Excellence</h3>
+                    <p>Achieved 98% patient satisfaction rating and recognized for clinical quality metrics</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">👥</div>
+                    <h3 class="achievement-title">Community Leader</h3>
+                    <p>Board member of Regional Medical Association and volunteer at free health clinics</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🔬</div>
+                    <h3 class="achievement-title">Research Contributions</h3>
+                    <p>Principal investigator in 5 clinical trials for cardiovascular disease prevention</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎓</div>
+                    <h3 class="achievement-title">Medical Education</h3>
+                    <p>Adjunct Professor at State University Medical School, teaching clinical medicine</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Ready to Experience Excellence in Healthcare?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #e0e7ff;">
+                Schedule your appointment today and discover the difference personalized, compassionate care can make.
+            </p>
+            <div class="cta-buttons">
+                <a href="#appointment" class="btn btn-primary">📅 Book Appointment Online</a>
+                <a href="tel:+15551234567" class="btn btn-secondary">📞 Call (555) 123-4567</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3 class="contact-title">Address</h3>
+                    <p>123 Healthcare Drive<br>Medical District, NY 10001<br>Suite 200</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3 class="contact-title">Phone</h3>
+                    <p>Main: (555) 123-4567<br>Emergency: (555) 911-0000<br>Fax: (555) 123-4568</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3 class="contact-title">Email</h3>
+                    <p>info@healthcareplus.com<br>appointments@healthcareplus.com<br>dr.mitchell@healthcareplus.com</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">⏰</div>
+                    <h3 class="contact-title">Office Hours</h3>
+                    <p>Monday-Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🌐</div>
+                    <h3 class="contact-title">Online Services</h3>
+                    <p>Patient Portal Available<br>Telemedicine Consultations<br>Online Appointment Booking</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🚗</div>
+                    <h3 class="contact-title">Parking & Access</h3>
+                    <p>Free Parking Available<br>Wheelchair Accessible<br>Public Transit Nearby</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 HealthCare Plus Clinic. All rights reserved. | Dr. Sarah Mitchell, MD - Board Certified Internal Medicine & Cardiology</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        document.querySelectorAll('.qualification-card').forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.1}s`;
+});
+
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.qualification-card, .achievement-card, .value-card, .contact-card, .timeline-item').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add stagger animation delay
+        document.querySelectorAll('.qualification-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+        </script>

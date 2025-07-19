@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Services - HealthCare Plus Clinic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2c5aa0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #e0e7ff;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: white;
+            padding: 4rem 0;
+            margin-top: -2rem;
+            position: relative;
+            z-index: 10;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: #2c5aa0;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e6f2ff 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(44, 90, 160, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .service-card:hover::before {
+            top: -25%;
+            right: -25%;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            color: #2c5aa0;
+            font-weight: 600;
+        }
+
+        .service-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-features li {
+            padding: 0.3rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Specialty Services */
+        .specialty-services {
+            background: #f8f9ff;
+            padding: 4rem 0;
+        }
+
+        .specialty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .specialty-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #667eea;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .specialty-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .specialty-title {
+            font-size: 1.5rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .specialty-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Emergency Services */
+        .emergency-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .emergency-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .emergency-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .emergency-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .emergency-number {
+            font-size: 2rem;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3a8a 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #e0e7ff;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e6f2ff 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(44, 90, 160, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Floating Action Button */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .floating-cta:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(255, 107, 107, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">🏥 HealthCare Plus</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#specialties">Specialties</a></li>
+                <li><a href="#emergency">Emergency</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Medical Services</h1>
+                <p>Comprehensive healthcare services designed to meet all your medical needs with compassionate, expert care</p>
+                <div class="hero-cta">
+                    <a href="#appointment" class="btn btn-primary">📅 Book Appointment</a>
+                    <a href="tel:+15551234567" class="btn btn-secondary">📞 Call Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">Primary Care Services</h2>
+            <p class="section-subtitle">
+                Our comprehensive primary care services focus on preventive medicine, early detection, and ongoing health management for patients of all ages.
+            </p>
+
+            <div class="services-category">
+                <h3 class="category-title">General Medicine</h3>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🩺</div>
+                            <h4 class="service-title">Annual Health Checkups</h4>
+                        </div>
+                        <p class="service-description">
+                            Comprehensive annual physical examinations including vital signs assessment, medical history review, and preventive health screening.
+                        </p>
+                        <ul class="service-features">
+                            <li>Complete physical examination</li>
+                            <li>Blood pressure and weight monitoring</li>
+                            <li>Health risk assessment</li>
+                            <li>Personalized health recommendations</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🤒</div>
+                            <h4 class="service-title">Acute Illness Treatment</h4>
+                        </div>
+                        <p class="service-description">
+                            Prompt diagnosis and treatment of acute conditions including fever, infections, respiratory issues, and other immediate health concerns.
+                        </p>
+                        <ul class="service-features">
+                            <li>Fever management and treatment</li>
+                            <li>Cold and flu treatment</li>
+                            <li>Respiratory infection care</li>
+                            <li>Same-day sick visits</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">💊</div>
+                            <h4 class="service-title">Chronic Disease Management</h4>
+                        </div>
+                        <p class="service-description">
+                            Ongoing management of chronic conditions such as diabetes, hypertension, and heart disease with personalized treatment plans.
+                        </p>
+                        <ul class="service-features">
+                            <li>Diabetes management and monitoring</li>
+                            <li>Blood pressure control</li>
+                            <li>Medication management</li>
+                            <li>Regular follow-up care</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-category">
+                <h3 class="category-title">Preventive Care</h3>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">💉</div>
+                            <h4 class="service-title">Vaccination Services</h4>
+                        </div>
+                        <p class="service-description">
+                            Complete immunization programs for children and adults, including routine vaccines, travel vaccines, and flu shots.
+                        </p>
+                        <ul class="service-features">
+                            <li>Childhood immunizations</li>
+                            <li>Adult vaccines (flu, tetanus, etc.)</li>
+                            <li>Travel vaccine consultations</li>
+                            <li>Vaccine record management</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">📏</div>
+                            <h4 class="service-title">Growth & Development Tracking</h4>
+                        </div>
+                        <p class="service-description">
+                            Comprehensive monitoring of child growth and development milestones with early intervention when needed.
+                        </p>
+                        <ul class="service-features">
+                            <li>Height and weight tracking</li>
+                            <li>Developmental milestone assessment</li>
+                            <li>Nutritional guidance</li>
+                            <li>Early intervention referrals</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🔬</div>
+                            <h4 class="service-title">Health Screenings</h4>
+                        </div>
+                        <p class="service-description">
+                            Regular health screenings for early detection of diseases including cancer screening, cardiovascular risk assessment, and more.
+                        </p>
+                        <ul class="service-features">
+                            <li>Cancer screening programs</li>
+                            <li>Cardiovascular risk assessment</li>
+                            <li>Diabetes screening</li>
+                            <li>Bone density testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-category">
+                <h3 class="category-title">Diagnostic Services</h3>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🧪</div>
+                            <h4 class="service-title">Laboratory Testing</h4>
+                        </div>
+                        <p class="service-description">
+                            Comprehensive laboratory services including blood work, urinalysis, and specialized testing for accurate diagnosis.
+                        </p>
+                        <ul class="service-features">
+                            <li>Complete blood count (CBC)</li>
+                            <li>Lipid panels and glucose testing</li>
+                            <li>Urinalysis and cultures</li>
+                            <li>Hormone level testing</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">📊</div>
+                            <h4 class="service-title">Imaging Services</h4>
+                        </div>
+                        <p class="service-description">
+                            Advanced imaging services including X-rays, ultrasounds, and EKGs for comprehensive diagnostic capabilities.
+                        </p>
+                        <ul class="service-features">
+                            <li>Digital X-ray imaging</li>
+                            <li>Ultrasound examinations</li>
+                            <li>EKG and stress testing</li>
+                            <li>Bone density scans</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🫀</div>
+                            <h4 class="service-title">Cardiac Testing</h4>
+                        </div>
+                        <p class="service-description">
+                            Comprehensive cardiac evaluation including EKGs, stress testing, and heart monitoring for cardiovascular health assessment.
+                        </p>
+                        <ul class="service-features">
+                            <li>12-lead EKG testing</li>
+                            <li>Stress testing</li>
+                            <li>24-hour heart monitoring</li>
+                            <li>Cardiac risk assessment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specialty-services" id="specialties">
+        <div class="container">
+            <h2 class="section-title">Specialty Services</h2>
+            <p class="section-subtitle">
+                Advanced medical services provided by our specialized medical team with expertise in various fields of medicine.
+            </p>
+            <div class="specialty-grid">
+                <div class="specialty-card">
+                    <div class="specialty-icon">❤️</div>
+                    <h3 class="specialty-title">Cardiology</h3>
+                    <p class="specialty-description">
+                        Comprehensive heart care including diagnosis and treatment of cardiovascular conditions, heart disease prevention, and cardiac rehabilitation.
+                    </p>
+                </div>
+
+                <div class="specialty-card">
+                    <div class="specialty-icon">🧠</div>
+                    <h3 class="specialty-title">Mental Health</h3>
+                    <p class="specialty-description">
+                        Mental health services including counseling, therapy, and treatment for anxiety, depression, and other psychological conditions.
+                    </p>
+                </div>
+
+                <div class="specialty-card">
+                    <div class="specialty-icon">🦴</div>
+                    <h3 class="specialty-title">Orthopedics</h3>
+                    <p class="specialty-description">
+                        Treatment of musculoskeletal conditions including joint pain, fractures, sports injuries, and arthritis management.
+                    </p>
+                </div>
+
+                <div class="specialty-card">
+                    <div class="specialty-icon">👁️</div>
+                    <h3 class="specialty-title">Ophthalmology</h3>
+                    <p class="specialty-description">
+                        Comprehensive eye care including vision screening, eye disease treatment, and preventive eye health services.
+                    </p>
+                </div>
+
+                <div class="specialty-card">
+                    <div class="specialty-icon">🩻</div>
+                    <h3 class="specialty-title">Dermatology</h3>
+                    <p class="specialty-description">
+                        Skin health services including skin cancer screening, acne treatment, and management of various skin conditions.
+                    </p>
+                </div>
+
+                <div class="specialty-card">
+                    <div class="specialty-icon">📱</div>
+                    <h3 class="specialty-title">Telemedicine</h3>
+                    <p class="specialty-description">
+                        Virtual consultations and remote monitoring services for convenient access to healthcare from the comfort of your home.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="emergency-section" id="emergency">
+        <div class="container">
+            <div class="emergency-content">
+                <h2 class="emergency-title">Emergency Services</h2>
+                <p class="emergency-description">
+                    For urgent medical situations, our emergency services are available 24/7. Our experienced medical team is ready to provide immediate care when you need it most.
+                </p>
+                <div class="emergency-number">📞 Emergency: (555) 911-0000</div>
+                <p style="opacity: 0.9;">
+                    For life-threatening emergencies, please call 911 immediately. Our emergency line is for urgent but non-life-threatening medical situations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Schedule Your Appointment?</h2>
+                <p class="cta-description">
+                    Take the first step towards better health. Our experienced medical team is here to provide you with the personalized care you deserve.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#appointment" class="btn btn-primary">📅 Book Appointment Online</a>
+                    <a href="tel:+15551234567" class="btn btn-secondary">📞 Call (555) 123-4567</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3 class="contact-title">Address</h3>
+                    <div class="contact-info">
+                        123 Healthcare Drive<br>
+                        Medical District, NY 10001<br>
+                        Suite 200
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3 class="contact-title">Phone Numbers</h3>
+                    <div class="contact-info">
+                        Main: (555) 123-4567<br>
+                        Emergency: (555) 911-0000<br>
+                        Fax: (555) 123-4568
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3 class="contact-title">Email</h3>
+                    <div class="contact-info">
+                        appointments@healthcareplus.com<br>
+                        info@healthcareplus.com<br>
+                        emergency@healthcareplus.com
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">⏰</div>
