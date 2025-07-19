@@ -66,6 +66,57 @@
             color: #2c5aa0;
         }
 
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #2c5aa0;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 15px 15px;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu li {
+            padding: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(44, 90, 160, 0.1);
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(44, 90, 160, 0.1);
+            color: #2c5aa0;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -374,29 +425,136 @@
             text-align: center;
         }
 
-        /* Responsive Design */
+        /* Mobile Responsive Design */
         @media (max-width: 768px) {
+            /* Navigation */
             .nav-links {
                 display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            /* Container padding adjustment */
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Hero section adjustments */
+            .hero {
+                padding: 100px 0 60px;
             }
 
             .doctor-info {
                 flex-direction: column;
                 text-align: center;
+                gap: 2rem;
+            }
+
+            .doctor-photo {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
             }
 
             .doctor-details h1 {
                 font-size: 2rem;
             }
 
+            .specialization {
+                font-size: 1.2rem;
+            }
+
+            .clinic-intro {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
             }
 
             .btn {
                 width: 100%;
                 max-width: 300px;
+                padding: 1.2rem 2rem;
+            }
+
+            /* Section adjustments */
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .services, .testimonials, .quick-access, .faq, .contact {
+                padding: 3rem 0;
+            }
+
+            /* Grid adjustments */
+            .quick-grid, .services-grid, .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+            }
+
+            /* Card adjustments */
+            .quick-card, .service-card, .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            /* FAQ adjustments */
+            .faq-question {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            .faq-answer.active {
+                padding: 1rem;
+            }
+
+            /* Footer text */
+            footer {
+                padding: 1.5rem 0;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .doctor-details h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .quick-card h3, .service-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
             }
         }
 
@@ -415,6 +573,18 @@
         .fade-in {
             animation: fadeInUp 0.6s ease-out;
         }
+
+        /* Mobile menu animation */
+        .mobile-menu {
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -428,6 +598,16 @@
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="patient_testimonials_page.html">Reviews and Photos</a></li>
             </ul>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+                    <li><a href="about_us.html" onclick="closeMobileMenu()">About</a></li>
+                    <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+                    <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+                    <li><a href="patient_testimonials_page.html" onclick="closeMobileMenu()">Reviews and Photos</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -616,6 +796,27 @@
     </footer>
 
     <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
         function toggleFAQ(button) {
             const answer = button.nextElementSibling;
             const isActive = answer.classList.contains('active');
